@@ -5,4 +5,8 @@ set sw=2
 let g:Tex_ViewRule_pdf = 'zathura'
 
 " Compile pdf
-let g:Tex_DefultTargetFormat = 'pdf'
+let g:Tex_DefaultTargetFormat = 'pdf'
+
+" Compile as many times as needed when compiling pdf
+let g:Tex_MultipleCompileFormats = 'dvi,pdf'
+
