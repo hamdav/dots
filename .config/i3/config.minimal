@@ -1,0 +1,5 @@
+focus_follows_mouse no
+exec setxkbmap sv
+exec --no-startup-id compton
+new_window normal
+exec xterm
