@@ -80,6 +80,15 @@ set mat=2
 " Enable syntax highlighting
 syntax enable
 
+" Colorscheme
+colorscheme badwolf
+
+" Remove background to make it the same as the terminal. 
+highlight Normal ctermbg=none
+highlight LineNr ctermbg=none
+highlight SignColumn ctermbg=none
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
