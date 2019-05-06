@@ -1,72 +1,73 @@
 
-!! Colorscheme
 
-! special
-!*.foreground: #93a1a1
-!*.background: #141c21
-!*.cursorColor: #afbfbf
+! --- ~/.Xresources ------------------------------------------------------------
+! ------------------------------------------------------------------------------
+! --- generated with 4bit Terminal Color Scheme Designer -----------------------
+! ------------------------------------------------------------------------------
+! --- http://ciembor.github.com/4bit -------------------------------------------
+! ------------------------------------------------------------------------------
+
+! --- special colors ---
+
+*background: #101010
+*foreground: #d9e6f2
+
+! --- standard colors ---
 
 ! black
-!!!*.color0: #263640
-!*.color8: #4a697d
+*color0: #000000
+
+! bright_black
+*color8: #202020
 
 ! red
-!*.color1: #d12f2c
-!*.color9: #fa3935
+*color1: #dc571a
 
-!! green
-!*.color2: #819400
-!*.color10: #a4bd00
+! bright_red
+*color9: #e6793d
+
+! green
+*color2: #8ea01f
+
+! bright_green
+*color10: #b2aa41
 
 ! yellow
-!*.color3: #b08500
-!*.color11: #d9a400
+*color3: #d7a01a
+
+! bright_yellow
+*color11: #e2aa3d
 
 ! blue
-!*.color4: #2587cc
-!*.color12: #2ca2f5
+*color4: #935268
+
+! bright_blue
+*color12: #b57672
 
 ! magenta
-!*.color5: #696ebf
-!*.color13: #8086e8
+*color5: #dc5262
+
+! bright_magenta
+*color13: #e6766e
 
 ! cyan
-!*.color6: #289c93
-!*.color14: #33c5ba
+*color6: #8e9a68
+
+! bright_cyan
+*color14: #b2a672
 
 ! white
-!*.color7: #bfbaac
-!*.color15: #fdf6e3
+*color7: #d5d5d5
 
-! Low contrast theme, based on Zenburn <http://slinky.imukuppi.org/zenburnpage/>
-! Modified from <https://gist.github.com/564084>
-URxvt.foreground:       [100]#0c0c0c
-URxvt.color0:           #3f3f3f
-URxvt.color1:           #705050
-URxvt.color2:           #00b45a
-URxvt.color3:           #dfcf8f
-URxvt.color4:           #506070
-URxvt.color5:           #dc8cc3
-URxvt.color6:           #8cd0d3
-URxvt.color7:           #dcdccc
-URxvt.color8:           #709080
-URxvt.color9:           #cc5454
-URxvt.color10:          #4d9f4d
-URxvt.color11:          #f0dfaf
-URxvt.color12:          #4186be
-URxvt.color13:          #ec93d3
-URxvt.color14:          #93e0e3
-URxvt.color15:          #ffffff
-URxvt.depth:		32
-URxvt.background:	#ffffff
+! bright_white
+*color15: #ffffff
 
 ! Fake transparency
 !URxvt*transparent: 	true
 !URxvt*shading:		30
 
 !! URxvt Appearance
-URxvt.font: xft:inconsolata:pixelsize=14
-URxvt.reverseVideo: True
+URxvt.font: xft:inconsolata:pixelsize=15
 URxvt.letterSpace: 0
 URxvt.lineSpace: 0
 URxvt.internalBorder: 48
@@ -76,7 +77,6 @@ URxvt.saveline: 4092
 URxvt.scrollBar: false
 URxvt.scrollBar_right: false
 URxvt.urgentOnBell: true
-!URxvt.depth: 24
 URxvt.iso14755: false
 
 ! do not scroll with output
@@ -89,9 +89,11 @@ URxvt*scrollWithBuffer: true
 URxvt*scrollTtyKeypress: true
 
 ! fix scrolling while in a secondary screen (like in less). otherwise it just scrolls up the terminal I think
-!URxvt.secondaryScreen: 1
-!URxvt.secondaryScroll: 0
+URxvt.secondaryScreen: 1
+URxvt.secondaryScroll: 0
 
-URxvt.perl-ext-common: default,matcher
+! selection-to-clipboard copies selected text to system clipboard. 
+URxvt.perl-ext-common: default,matcher,selection-to-clipboard
 URxvt.url-launcher: /usr/bin/firefox
 URxvt.matcher.button: 1
+
