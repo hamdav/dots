@@ -67,7 +67,8 @@
 !URxvt*shading:		30
 
 !! URxvt Appearance
-URxvt.font: xft:inconsolata:pixelsize=15
+URxvt.font: xft:Inconsolata Nerd Font Mono:size=12
+!xft:FontAwesome:pixelsize=15
 URxvt.letterSpace: 0
 URxvt.lineSpace: 0
 URxvt.internalBorder: 48
@@ -77,7 +78,7 @@ URxvt.saveline: 4092
 URxvt.scrollBar: false
 URxvt.scrollBar_right: false
 URxvt.urgentOnBell: true
-URxvt.iso14755: false
+! URxvt.iso14755: false
 
 ! do not scroll with output
 URxvt*scrollTtyOutput: false
