@@ -1,10 +1,12 @@
-##### i3-config / RESLOVED  #######################
+##### i3-config / DARCH  #######################
 
 ##### GENERAL ##################################### 
 
 set $mod Mod4
 
-font pango: monospace 8 
+# font pango: monospace 8
+# font pango: Inconsolata Nerd Font Mono 12
+font pango: Inconsolata 12
 
 # APP VARIABLES
 set $browser	firefox
@@ -161,8 +163,8 @@ bindsym $mod+c $center
 ##### WORKSPACES ##################################
 
 # WORKSPACES
-set $ws1 "1"
-set $ws2 "2"
+set $ws1 "1: Browser "
+set $ws2 "2: Terminal "
 set $ws3 "3"
 set $ws4 "4"
 set $ws5 "5"
@@ -171,6 +173,9 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
+
+# Exampel on how to name with color
+# set $ws9 9:<span foreground="red">vim</span>
 
 # SWITCH TO WORKSPACE
 bindsym $mod+1 workspace $ws1
@@ -195,6 +200,10 @@ bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
+
+# WORKSPACE SPECIFIC GAPS
+# workspace $ws1 gaps inner 0
+# workspace $ws1 gaps outer 0
 
 ##### COLORS #######################################
 
@@ -272,12 +281,43 @@ bindsym $mod+Shift+n exec rofi-web    "$browser --new-window"
 
 ##### BAR #########################################
 
+# Colors 
+
+set $bg #101010
+set $fg #d9e6f2
+
+set $black #000000
+set $darkgrey #101010
+set $red #dc571a
+set $green #8ea01f
+set $yellow #d7a01a
+set $orange #dc821a
+set $blue #935268
+set $magenta #dc5262
+set $cyan #8e9a68
+set $white #ffffff
+
 bar {
 	mode hide
 	hidden_state hide
 	modifier $mod
 	position top
     status_command i3status
+    strip_workspace_numbers yes
+    separator_symbol "  "
+    tray_padding 5 
+    colors {
+		# bar background color
+		background $bg
+		# text color used for blocks that do not have a color specified.
+		statusline $yellow
+		# workspaces section
+		#						border		backgr		text
+		focused_workspace		$orange 	$orange 	$white
+		inactive_workspace		$bg       	$bg       	$orange
+		active_workspace		$bg       	$bg       	$orange
+		urgent_workspace		$red		$red		$white
+    }
 }
 
 ##### LAUNCH ###################################### 

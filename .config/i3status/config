@@ -8,35 +8,38 @@
 
 general {
         colors = true
+        color_good = "#8ea01f"
+        color_bad = "#dc571a"
+        color_degraded = "#d7a01a"
         interval = 5
 }
 
 order += "volume master"
-order += "ipv6"
-order += "disk /"
+# order += "ipv6"
+# order += "disk /"
 order += "wireless _first_"
 order += "ethernet _first_"
 order += "battery all"
-order += "load"
+# order += "load"
 order += "tztime local"
 
 wireless _first_ {
-        format_up = "W: (%quality at %essid) %ip"
-        format_down = "W: down"
+        format_up = " %quality at %essid"
+        format_down = " down"
 }
 
 ethernet _first_ {
         # if you use %speed, i3status requires root privileges
-        format_up = "E: %ip (%speed)"
-        format_down = "E: down"
+        format_up = " %ip"
+        format_down = " down"
 }
 
 battery all {
-        format = "%status %percentage %remaining"
+        format = " %status %percentage %remaining"
 }
 
 tztime local {
-        format = "%Y-%m-%d %H:%M:%S"
+        format = " %Y-%m-%d %H:%M:%S"
 }
 
 load {
@@ -47,8 +50,8 @@ disk "/" {
         format = "%avail"
 }
 volume master {
-        format = "♪: %volume"
-        format_muted = "♪: muted (%volume)"
+        format = " %volume"
+        format_muted = " (%volume)"
         device = "pulse"
         mixer = "Master"
         mixer_idx = 1
