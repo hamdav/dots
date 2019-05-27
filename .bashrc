@@ -11,3 +11,6 @@ PS1='\[\e[1;32m\]\u\[\e[1;34m\] \W\[\e[1;0m\]\$ '
 
 # For the tracking of dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.myconf --work-tree=$HOME'
+
+# For running matlab without gui
+alias natlab='/usr/local/bin/matlab -nodesktop'
