@@ -241,9 +241,9 @@ bindsym $mod+m exec light -S 0.2
 bindsym $mod+Shift+m exec light -S 100
 
 # ROFI
-bindsym $mod+d       exec rofi -show window -theme my_sidebar -display-window ""
+bindsym $mod+Tab       exec rofi -show window -theme my_sidebar -display-window ""
 #bindsym $mod+Ctrl+d  exec rofi-dict
-bindsym $mod+Shift+d exec rofi -show run -theme my_sidebar -display-window ""
+bindsym $mod+d exec rofi -show run -theme my_sidebar -display-window ""
 
 # BACKGROUND
 exec_always --no-startup-id feh --bg-scale ~/Wallpapers/wallpaper.jpg
