@@ -251,9 +251,9 @@ exec_always --no-startup-id feh --bg-scale ~/Wallpapers/wallpaper.jpg
 
 ##### APP BINDS ###################################
 
-bindsym $mod+n       exec $browser
-bindsym $mod+Ctrl+n  exec rofi-search "$browser --new-window"
-bindsym $mod+Shift+n exec rofi-web    "$browser --new-window" 
+#bindsym $mod+n       exec $browser
+#bindsym $mod+Ctrl+n  exec rofi-search "$browser --new-window"
+#bindsym $mod+Shift+n exec rofi-web    "$browser --new-window" 
 
 #bindsym $mod+m       exec spotify
 #bindsym $mod+Ctrl+m  exec steam
@@ -314,7 +314,7 @@ bar {
 		statusline $yellow
 		# workspaces section
 		#						border		backgr		text
-		focused_workspace		$orange 	$orange 	$white
+		focused_workspace		$orange 	$orange 	$bg
 		inactive_workspace		$bg       	$bg       	$orange
 		active_workspace		$bg       	$bg       	$orange
 		urgent_workspace		$red		$red		$white
