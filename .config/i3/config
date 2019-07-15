@@ -1,4 +1,5 @@
 ##### i3-config / DARCH  #######################
+#
 
 ##### GENERAL ##################################### 
 
@@ -34,6 +35,7 @@ set $thick 24
 
 # FLOATING APPLICATIONS
 for_window [class="feh"] floating enable
+for_window [class="Qalculate-gtk"] floating enable
 for_window [class="Matplotlib"] floating enable
 for_window [class="MATLAB R2019a - academic use"] floating enable
 
@@ -159,7 +161,7 @@ bindsym $mod+Shift+space focus mode_toggle
 #bindsym $mod+Ctrl+space floating toggle; resize set 700px 975px; $center
 
 # CENTER FLOATING
-bindsym $mod+c $center
+#bindsym $mod+c $center
 
 ##### WORKSPACES ##################################
 
@@ -203,8 +205,8 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
 # WORKSPACE SPECIFIC GAPS
-# workspace $ws1 gaps inner 0
-# workspace $ws1 gaps outer 0
+ workspace $ws1 gaps inner 0
+ workspace $ws1 gaps outer 0
 
 ##### COLORS #######################################
 
@@ -222,7 +224,6 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 ##### TOOLS ########################################
 
 # SCREENSHOT
-# Does not work? What button is print
 set $shots ~/Pictures/screenshots
 
 bindsym $mod+Print exec maim $shots/$(date +%s).png
@@ -245,13 +246,16 @@ bindsym $mod+Tab       exec rofi -show window -theme my_sidebar -display-window 
 #bindsym $mod+Ctrl+d  exec rofi-dict
 bindsym $mod+d exec rofi -show run -theme my_sidebar -display-window ""
 
+# CALCULATOR
+bindsym $mod+c exec qalculate-gtk
+
 # BACKGROUND
-exec_always --no-startup-id feh --bg-scale ~/Wallpapers/wallpaper.jpg
+exec_always --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/wallpaper.jpg
 
 
 ##### APP BINDS ###################################
 
-#bindsym $mod+n       exec $browser
+bindsym $mod+n       exec $browser
 #bindsym $mod+Ctrl+n  exec rofi-search "$browser --new-window"
 #bindsym $mod+Shift+n exec rofi-web    "$browser --new-window" 
 
