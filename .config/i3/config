@@ -329,8 +329,7 @@ bar {
 
 # STARTUP
 exec_always --no-startup-id compton
-exec --no-startup-id rescuetime
-exec --no-startup-id $term
+#exec --no-startup-id $term
 exec --no-startup-id dropbox start
 #exec ~/.Conky/startconky.sh
 #exec_always --no-startup-id xautolock -time 5 -locker '~/.i3lockscript/blurshot.sh'
@@ -339,4 +338,3 @@ exec --no-startup-id dropbox start
 
 # RELOAD
 #exec_always --no-startup-id compton
-
