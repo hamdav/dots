@@ -14,5 +14,3 @@ alias config='/usr/bin/git --git-dir=$HOME/.myconf --work-tree=$HOME'
 
 # For running matlab without gui
 alias natlab='/usr/local/bin/matlab -nodesktop'
-
-alias fuck='sudo "$BASH" -c "$(history -p !!)"'
