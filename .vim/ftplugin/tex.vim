@@ -13,3 +13,6 @@ let g:Tex_MultipleCompileFormats = 'dvi,pdf'
 " Set compile rule. OBS option -shell-escape lets latex run commands in
 " terminal
 let g:Tex_CompileRule_pdf = 'pdflatex -interaction=nonstopmode -shell-escape $*'
+
+" Set leaderkey to §, (was originally ` (backtick))
+let g:Tex_Leader = '§'
