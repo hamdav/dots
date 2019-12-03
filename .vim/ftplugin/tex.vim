@@ -16,3 +16,6 @@ let g:Tex_CompileRule_pdf = 'pdflatex -interaction=nonstopmode -shell-escape $*'
 
 " Set leaderkey to §, (was originally ` (backtick))
 let g:Tex_Leader = '§'
+
+" Enable alt-key bindings in vim latex.
+let g:Tex_AdvancedMath = 1
