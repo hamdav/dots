@@ -1,8 +1,6 @@
 
 " # # # # From vim-latexsuite # # # #
 "
-" REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
-filetype plugin on
 
 " IMPORTANT: win32 users will need to have 'shellslash' set so that latex
 " can be called correctly.
@@ -16,7 +14,11 @@ filetype indent on
 " The following changes the default filetype back to 'tex':
 let g:tex_flavor='latex'
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Instant markdown plugin
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+let g:instant_markdown_browser = 'firefox --new-window'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -79,7 +81,7 @@ set mat=2
 " Enable syntax highlighting
 syntax enable
 
-" Colorscheme
+" Colorscheme 
 colorscheme badwolf
 
 " Remove background to make it the same as the terminal. 
@@ -126,8 +128,8 @@ set laststatus=2
 """"""""""""""""""""""""""
 "Enable switching with Ctrl+HJKL instead of Ctrl+W Ctrl+HJKL
 
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+" nnoremap <C-J> <C-W><C-J>
+" nnoremap <C-K> <C-W><C-K>
+" nnoremap <C-L> <C-W><C-L>
+" nnoremap <C-H> <C-W><C-H>
 
