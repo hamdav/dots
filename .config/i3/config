@@ -249,6 +249,9 @@ bindsym $mod+d exec rofi -show run -theme my_sidebar -display-window ""
 # CALCULATOR
 bindsym $mod+c exec qalculate-gtk
 
+# CONKY
+bindsym $mod+Ctrl+c exec conky
+
 # BACKGROUND
 exec_always --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/wallpaper.jpg
 
