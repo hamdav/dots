@@ -1,78 +1,183 @@
-"########## for Vundle ##############
-set nocompatible              " required
-filetype off                  " required
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vim-plug
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin('~/.vim/plugged')
 
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+" add all your plugins here 
+" Plug 'monkey/bananas' is shorthand for 
+" Plug 'https://github.com/monkey/bananas'
+    " No BS code folding for python
+Plug 'tmhedberg/SimpylFold'
+    " Better python indentation
+Plug 'vim-scripts/indentpython.vim'
+    " Autocomplete
+Plug 'Valloric/YouCompleteMe'
+    " Latex tools
+Plug 'vim-latex/vim-latex'
+    " Git mergetool
+Plug 'whiteinge/diffconflicts'
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+" Syntax error checking. 
+Plug 'vim-syntastic/syntastic'
+    " The plugin needs external syntax checkers
+    " Checker for python syntax and style
+" Plug 'nvie/vim-flake8'
 
-" add all your plugins here (note older versions of Vundle
-" used Bundle instead of Plugin)
-Plugin 'tmhedberg/SimpylFold'
-Plugin 'vim-scripts/indentpython.vim'
-Plugin 'Valloric/YouCompleteMe'
-"Plugin 'vim-syntastic/syntastic'
-Plugin 'nvie/vim-flake8'
-Plugin 'jnurmine/Zenburn'
-Plugin 'morhetz/gruvbox'
-Plugin 'hdima/python-syntax'
-Plugin 'vim-latex/vim-latex'
-" ...
+
+" Color schemes
+Plug 'nanotech/jellybeans.vim'
+Plug 'jnurmine/Zenburn'
+Plug 'morhetz/gruvbox'
+Plug 'ciaranm/inkpot'
+Plug 'xiaody/thornbird.vim'
+
+" Syntax highlighting
+    " Python
+Plug 'hdima/python-syntax'
+    " Syntax highlighting and indentation for haskell
+Plug 'neovimhaskell/haskell-vim'
+
+" Concealment for haskell
+" Plug enomsg/vim-haskellConcealPlus
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+call plug#end()
 
-"########### End of Vundle customization ##########
 
-"Show line number (set nonumber to not show them)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => General
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Sets how many lines of history VIM has to remember
+set history=500
 
+" Enable filetype plugins
+filetype plugin on
+filetype indent on
+
+" Set to auto read when a file is changed from the outside
+set autoread
+
+" Set leader
+let mapleader = ","
+
+" Set encoding
+set encoding=utf-8
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => VIM user interface
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Set n lines to the cursor - when moving vertically using j/k
+set scrolloff=3
+
+" Set n characters to the cursor when moving right and left
+set sidescrolloff=5
+
+"Always show current position
+set ruler
+
+" Set row numbers and relative numbers
 set number
-
-"show relative numbers (if both this and number is on, show number on cursur and relative elsewhere)
-
 set relativenumber
 
-"Shows the commands as you type them in vim
+" Height of the command bar
+set cmdheight=1
 
+" Show commands as they are typed
 set showcmd
 
-"highlight search results
+" Display command line’s tab complete options as a menu.
+set wildmenu
 
+" A buffer becomes hidden when it is abandoned
+" set hid
+
+" Ignore case when searching
+set ignorecase
+
+" When searching try to be smart about cases
+set smartcase
+
+" Highlight search results
 set hlsearch
 
-"Enable folding
+" Incremental search
+set incsearch
 
+" Show matching brackets when text indicator is over them
+set showmatch
+" How many tenths of a second to blink when matching brackets
+set mat=2
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Colors and fonts
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"Make code look pretty
+let python_highlight_all=1
+syntax on
+
+" Set colorscheme
+colorscheme gruvbox
+
+"set dark mode for gruvbox
+set background=dark
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Text, tab and indent related
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Use spaces instead of tabs
+set expandtab
+
+" Be smart when using tabs ;)
+set smarttab
+
+" 1 tab == 4 spaces
+set shiftwidth=4
+set tabstop=4
+
+set ai "Auto indent
+set si "Smart indent
+set wrap "Wrap lines
+
+" Enable folding
 set foldmethod=indent
 set foldlevel=99
 
-"Enabel folding with the spacebar
-
+" Enable folding with spacebar
 nnoremap <space> za
 
-"Get proper PEP 8 indentation on tab press
+"Let enter make empty line below and shift enter empty line above
+map <Enter> o<ESC>
+map <S-Enter> O<ESC>
 
-"Autocomplete customizations
+" Let backspace remove indents and eols
+set backspace=indent,eol,start
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => YouCompleteMe customization
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 "Makes the autocomplete window go away when you are done with it
 let g:wcm_autoclose_preview_window_after_completion=1
 
 "Define shorcut for goto definition
 map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
-"Make code look pretty
-let python_highlight_all=1
-syntax on
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Syntastic customization
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"set dark mode for gruvbox
-set background=dark
+let g:syntastic_python_checkers = ['flake8']
 
-colorscheme gruvbox
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Visual style
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 
 au BufNewFile,BufRead *.py
     \ set tabstop=4 |
@@ -88,10 +193,4 @@ au BufNewFile,BufRead *.py
 "highlight BadWhitespace ctermbg=red guibg=darkred
 "au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
-set encoding=utf-8
-
-"Enable enter to make new line and shft enter to make new line below
-
-map <Enter> o<ESC>
-map <S-Enter> O<ESC>
 
