@@ -7,9 +7,9 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 [merge]
-	tool = diffconflicts
-[mergetool "diffconflicts"]
-	cmd = vim -c DiffConflicts \"$MERGED\" \"$BASE\" \"$LOCAL\" \"$REMOTE\"
-	trustExitCode = true
+	tool = kdiff3
+[mergetool "kdiff3"]
+    path = /Applications/kdiff3.app/Contents/MacOS/kdiff3
+    trustExitCode = false
 [mergetool]
 	keepBackup = false
