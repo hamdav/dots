@@ -17,6 +17,8 @@ alias natlab='/Applications/MATLAB_R2019b.app/bin/matlab -nodesktop'
 
 alias please='sudo "$BASH" -c "$(history -p !!)"'
 
+alias npltpy="python3 -i -c 'import numpy as np; import matplotlib.pyplot as plt; plt.style.use(\"fivethirtyeight\")'"
+
 # Add ghcup to path
 [ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
 
