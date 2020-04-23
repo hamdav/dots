@@ -1,6 +1,10 @@
 " Set indentation to 2 
 set sw=2
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vim-latex
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Set pdfviewer to skim 
 let g:Tex_ViewRule_pdf = 'open -a Skim'
 

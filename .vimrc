@@ -16,7 +16,12 @@ Plug 'Valloric/YouCompleteMe'
     " Latex tools
 Plug 'vim-latex/vim-latex'
     " Git mergetool
-Plug 'whiteinge/diffconflicts'
+"Plug 'whiteinge/diffconflicts'
+    " Git commands
+Plug 'tpope/vim-fugitive'
+    " Better statusline and tabline
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
 
 " Syntax error checking. 
 Plug 'vim-syntastic/syntastic'
@@ -31,6 +36,7 @@ Plug 'jnurmine/Zenburn'
 Plug 'morhetz/gruvbox'
 Plug 'ciaranm/inkpot'
 Plug 'xiaody/thornbird.vim'
+Plug 'sjl/badwolf'
 
 " Syntax highlighting
     " Python
@@ -88,6 +94,9 @@ set cmdheight=1
 " Show commands as they are typed
 set showcmd
 
+" Always show tabline
+set showtabline=2
+
 " Display command line’s tab complete options as a menu.
 set wildmenu
 
@@ -124,6 +133,66 @@ colorscheme gruvbox
 
 "set dark mode for gruvbox
 set background=dark
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Statusline
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Always show statusline
+set laststatus=2
+
+" Get current git branch
+function! GitBranch(git)
+  if a:git == ""
+    return '-'
+  else
+    return a:git
+  endif
+endfunction
+
+" If file is a tex file, run texcount on save and output to statusline
+let g:latex_wc=""
+augroup latexstatus
+    au!
+    " Whenever a tex file is written, Read or entered (e.g. when switching to
+    " tab) count the words
+    autocmd BufWritePost,BufRead,BufEnter *.tex :let g:latex_wc=GetWC()." words"
+    " Whenever tex file is left, do not display a wordcount
+    autocmd BufLeave *.tex :let g:latex_wc=""
+augroup END
+
+" Get the texcount wordcount for current file
+function! GetWC()
+    let l:tmp=system("texcount"." ".expand('%'))
+    let l:tmp1=system("grep 'Words in text'", l:tmp)
+    let l:tmp2=system("egrep -o -e '[0-9]+'", l:tmp1)
+    let l:tmp3=system("tr -d '\n'", l:tmp2)
+    return l:tmp3
+endfunction
+
+" Define some highlight groups to display nice colors
+hi Base ctermbg=238 ctermfg=208
+"hi ColCol ctermbg=235 ctermfg=245
+hi SepCol ctermbg=238 ctermfg=39 cterm=bold
+hi GitCol ctermbg=235 ctermfg=35
+
+" Create the statusline
+set statusline=""
+set statusline+=%#LineNr#
+set statusline+=%3c
+set statusline+=%#SepCol#%{'\ «\ '}%#Base#
+set statusline+=%t      " Filename
+set statusline+=%1m     " Modified flag
+set statusline+=%1r     " Read-Only flag
+set statusline+=%#SepCol#%{'\ »\ \ \ '}%#Base#
+
+set statusline+=%= " Left - Right separation
+set statusline+=%{g:latex_wc} " Latex wordcount
+set statusline+=%#SepCol#%{'\ \ \ «\ '}%#Base#
+set statusline+=%#GitCol#
+set statusline+=\ 
+set statusline+=%{GitBranch(fugitive#head())}
+set statusline+=\ 
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -173,6 +242,20 @@ map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:syntastic_python_checkers = ['flake8']
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Airline configuration
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"let g:airline_section_z = ''
+"let g:airline_section_b = ''
+"let g:airline_section_c = ''
+"let g:airline_section_y = ''
+"let g:airline_section_x = ''
+"let g:airline_section_error = airline#section#create_right(['syntastic-warn'])
+"let g:airline_section_warning = ''
+"let g:airline#extensions#wordcount#enabled = 0
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Visual style
