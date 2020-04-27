@@ -8,6 +8,8 @@
 	process = git-lfs filter-process
 [merge]
 	tool = kdiff3
+[commit]
+    verbose=true
 [mergetool]
 	keepBackup = false
 [mergetool "kdiff3"]
