@@ -8,8 +8,10 @@
 	process = git-lfs filter-process
 [merge]
 	tool = kdiff3
+[mergetool]
+	keepBackup = false
 [mergetool "kdiff3"]
     path = /Applications/kdiff3.app/Contents/MacOS/kdiff3
     trustExitCode = false
-[mergetool]
-	keepBackup = false
+[mergetool "fugitive"]
+    cmd = vim -f -c "Gdiff" "$MERGED"
