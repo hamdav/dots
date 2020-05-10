@@ -1,24 +1,55 @@
-
-" # # # # From vim-latexsuite # # # #
-"
-
-" IMPORTANT: win32 users will need to have 'shellslash' set so that latex
-" can be called correctly.
-set shellslash
-
-" OPTIONAL: This enables automatic indentation as you type.
-filetype indent on
-
-" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
-" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
-" The following changes the default filetype back to 'tex':
-let g:tex_flavor='latex'
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Instant markdown plugin
+" => vim-plug
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:instant_markdown_browser = 'firefox --new-window'
+call plug#begin('~/.vim/plugged')
+
+" add all your plugins here 
+" Plug 'monkey/bananas' is shorthand for 
+" Plug 'https://github.com/monkey/bananas'
+    " No BS code folding for python
+Plug 'tmhedberg/SimpylFold'
+    " Better python indentation
+Plug 'vim-scripts/indentpython.vim'
+    " Autocomplete
+Plug 'Valloric/YouCompleteMe'
+    " Latex tools
+Plug 'vim-latex/vim-latex'
+    " Git mergetool
+"Plug 'whiteinge/diffconflicts'
+    " Git commands
+Plug 'tpope/vim-fugitive'
+    " Better statusline and tabline
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
+
+" Syntax error checking. 
+Plug 'vim-syntastic/syntastic'
+    " The plugin needs external syntax checkers
+    " Checker for python syntax and style
+" Plug 'nvie/vim-flake8'
+
+
+" Color schemes
+Plug 'nanotech/jellybeans.vim'
+Plug 'jnurmine/Zenburn'
+Plug 'morhetz/gruvbox'
+Plug 'ciaranm/inkpot'
+Plug 'xiaody/thornbird.vim'
+Plug 'sjl/badwolf'
+
+" Syntax highlighting
+    " Python
+Plug 'hdima/python-syntax'
+    " Syntax highlighting and indentation for haskell
+Plug 'neovimhaskell/haskell-vim'
+
+" Concealment for haskell
+" Plug enomsg/vim-haskellConcealPlus
+
+" All of your Plugins must be added before the following line
+call plug#end()
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -36,11 +67,19 @@ set autoread
 " Set leader
 let mapleader = ","
 
+" Set encoding
+set encoding=utf-8
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Set n lines to the cursor - when moving vertically using j/k
-set so=3
+set scrolloff=3
+
+" Set n characters to the cursor when moving right and left
+set sidescrolloff=5
 
 "Always show current position
 set ruler
@@ -55,8 +94,14 @@ set cmdheight=1
 " Show commands as they are typed
 set showcmd
 
+" Always show tabline
+set showtabline=2
+
+" Display command line’s tab complete options as a menu.
+set wildmenu
+
 " A buffer becomes hidden when it is abandoned
-set hid
+" set hid
 
 " Ignore case when searching
 set ignorecase
@@ -76,23 +121,84 @@ set showmatch
 set mat=2
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Colors and Fonts
+" => Colors and fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Enable syntax highlighting
-syntax enable
 
-" Colorscheme 
-colorscheme badwolf
+"Make code look pretty
+let python_highlight_all=1
+syntax on
 
-" Remove background to make it the same as the terminal. 
-highlight Normal ctermbg=none
-highlight LineNr ctermbg=none
-highlight SignColumn ctermbg=none
+" Set colorscheme
+colorscheme gruvbox
+
+"set dark mode for gruvbox
+set background=dark
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Statusline
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Always show statusline
+set laststatus=2
+
+" Get current git branch
+function! GitBranch(git)
+  if a:git == ""
+    return '-'
+  else
+    return a:git
+  endif
+endfunction
+
+" If file is a tex file, run texcount on save and output to statusline
+let g:latex_wc=""
+augroup latexstatus
+    au!
+    " Whenever a tex file is written, Read or entered (e.g. when switching to
+    " tab) count the words
+    autocmd BufWritePost,BufRead,BufEnter *.tex :let g:latex_wc=GetWC()." words"
+    " Whenever tex file is left, do not display a wordcount
+    autocmd BufLeave *.tex :let g:latex_wc=""
+augroup END
+
+" Get the texcount wordcount for current file
+function! GetWC()
+    let l:tmp=system("texcount"." ".expand('%'))
+    let l:tmp1=system("grep 'Words in text'", l:tmp)
+    let l:tmp2=system("egrep -o -e '[0-9]+'", l:tmp1)
+    let l:tmp3=system("tr -d '\n'", l:tmp2)
+    return l:tmp3
+endfunction
+
+" Define some highlight groups to display nice colors
+hi Base ctermbg=238 ctermfg=208
+"hi ColCol ctermbg=235 ctermfg=245
+hi SepCol ctermbg=238 ctermfg=39 cterm=bold
+hi GitCol ctermbg=235 ctermfg=35
+
+" Create the statusline
+set statusline=""
+set statusline+=%#LineNr#
+set statusline+=%3c
+set statusline+=%#SepCol#%{'\ «\ '}%#Base#
+set statusline+=%t      " Filename
+set statusline+=%1m     " Modified flag
+set statusline+=%1r     " Read-Only flag
+set statusline+=%#SepCol#%{'\ »\ \ \ '}%#Base#
+
+set statusline+=%= " Left - Right separation
+set statusline+=%{g:latex_wc} " Latex wordcount
+set statusline+=%#SepCol#%{'\ \ \ «\ '}%#Base#
+set statusline+=%#GitCol#
+set statusline+=\ 
+set statusline+=%{GitBranch(fugitive#head())}
+set statusline+=\ 
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Use spaces instead of tabs
 set expandtab
 
@@ -109,6 +215,7 @@ set wrap "Wrap lines
 
 " Enable folding
 set foldmethod=indent
+set foldlevel=99
 
 " Enable folding with spacebar
 nnoremap <space> za
@@ -117,19 +224,56 @@ nnoremap <space> za
 map <Enter> o<ESC>
 map <S-Enter> O<ESC>
 
-""""""""""""""""""""""""""""""
-" => Status line
-""""""""""""""""""""""""""""""
-" Always show the status line
-set laststatus=2
+" Let backspace remove indents and eols
+set backspace=indent,eol,start
 
-""""""""""""""""""""""""""
-" => Movement 
-""""""""""""""""""""""""""
-"Enable switching with Ctrl+HJKL instead of Ctrl+W Ctrl+HJKL
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => YouCompleteMe customization
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" nnoremap <C-J> <C-W><C-J>
-" nnoremap <C-K> <C-W><C-K>
-" nnoremap <C-L> <C-W><C-L>
-" nnoremap <C-H> <C-W><C-H>
+"Makes the autocomplete window go away when you are done with it
+let g:wcm_autoclose_preview_window_after_completion=1
+
+"Define shorcut for goto definition
+map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Syntastic customization
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:syntastic_python_checkers = ['flake8']
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Airline configuration
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"let g:airline_section_z = ''
+"let g:airline_section_b = ''
+"let g:airline_section_c = ''
+"let g:airline_section_y = ''
+"let g:airline_section_x = ''
+"let g:airline_section_error = airline#section#create_right(['syntastic-warn'])
+"let g:airline_section_warning = ''
+"let g:airline#extensions#wordcount#enabled = 0
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Visual style
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+au BufNewFile,BufRead *.py
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    "\ set textwidth=79 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix
+
+"Colour bad whitespace red
+
+"highlight BadWhitespace ctermbg=red guibg=darkred
+"au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
 
