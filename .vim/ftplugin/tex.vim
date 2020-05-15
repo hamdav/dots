@@ -14,9 +14,21 @@ let g:Tex_DefaultTargetFormat = 'pdf'
 " Compile as many times as needed when compiling pdf
 let g:Tex_MultipleCompileFormats = 'dvi,pdf'
 
-" Set compile rule. OBS option -shell-escape lets latex run commands in
-" terminal
-let g:Tex_CompileRule_pdf = 'pdflatex -interaction=nonstopmode -shell-escape $*'
+" Set compile rule.
+let g:Tex_CompileRule_pdf = 'pdflatex -interaction=nonstopmode $*'
+
+" Create mapping to toggle compiling with shell escape or not
+nnoremap <F12> :call ShellEscape()<CR>
+function! ShellEscape()
+  if g:Tex_CompileRule_pdf == 'pdflatex -interaction=nonstopmode $*'
+    let g:Tex_CompileRule_pdf = 'pdflatex -interaction=nonstopmode -shell-escape $*'
+    echo "shell escape enabled"
+  else
+    let g:Tex_CompileRule_pdf = 'pdflatex -interaction=nonstopmode $*'
+    echo "shell escape disabled"
+  endif
+endfunction
+
 
 " Set bibliography backend to biber (default is bibtex)
 let g:Tex_BibtexFlavor = 'biber'
