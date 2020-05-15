@@ -11,8 +11,11 @@ call plug#begin('~/.vim/plugged')
 Plug 'tmhedberg/SimpylFold'
     " Better python indentation
 Plug 'vim-scripts/indentpython.vim'
+    " Auto pep8
+Plug 'tell-k/vim-autopep8'
     " Autocomplete
 Plug 'Valloric/YouCompleteMe'
+"Plug 'maralla/completor.vim'
     " Latex tools
 Plug 'vim-latex/vim-latex'
     " Git mergetool
@@ -153,7 +156,7 @@ endfunction
 " If file is a tex file, run texcount on save and output to statusline
 let g:latex_wc=""
 augroup latexstatus
-    au!
+    autocmd!
     " Whenever a tex file is written, Read or entered (e.g. when switching to
     " tab) count the words
     autocmd BufWritePost,BufRead,BufEnter *.tex :let g:latex_wc=GetWC()." words"
@@ -171,10 +174,10 @@ function! GetWC()
 endfunction
 
 " Define some highlight groups to display nice colors
-hi Base ctermbg=238 ctermfg=208
+hi Base ctermbg=238 ctermfg=208 guibg=#444444 guifg=#ff8700
 "hi ColCol ctermbg=235 ctermfg=245
-hi SepCol ctermbg=238 ctermfg=39 cterm=bold
-hi GitCol ctermbg=235 ctermfg=35
+hi SepCol ctermbg=238 ctermfg=39 cterm=bold gui=bold guibg=#444444 guifg=#00afff
+hi GitCol ctermbg=235 ctermfg=35 guibg=#262626 guifg=#00af5f
 
 " Create the statusline
 set statusline=""
@@ -209,8 +212,8 @@ set smarttab
 set shiftwidth=4
 set tabstop=4
 
-set ai "Auto indent
-set si "Smart indent
+set autoindent "Auto indent
+filetype plugin indent on
 set wrap "Wrap lines
 
 " Enable folding
@@ -231,8 +234,11 @@ set backspace=indent,eol,start
 " => YouCompleteMe customization
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"Makes the autocomplete window go away when you are done with it
-let g:wcm_autoclose_preview_window_after_completion=1
+"Makes the autocomplete window go away after completion
+let g:ycm_autoclose_preview_window_after_completion=0
+
+"Makes the autocomplete window go away after exited insert mode
+let g:ycm_autoclose_preview_window_after_insertion=1
 
 "Define shorcut for goto definition
 map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
@@ -242,6 +248,22 @@ map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:syntastic_python_checkers = ['flake8']
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vim-autopep8
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Disabel show diff window
+let g:autopep8_disabe_show_diff=0
+
+" Map it to the f8 key
+augroup Autopep8cmds
+    autocmd!
+    autocmd FileType python noremap <buffer> <F8> :call Autopep8()<CR>
+augroup END
+
+" Do not format on save 
+let g:autopep8_on_save = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Airline configuration
@@ -255,25 +277,3 @@ let g:syntastic_python_checkers = ['flake8']
 "let g:airline_section_error = airline#section#create_right(['syntastic-warn'])
 "let g:airline_section_warning = ''
 "let g:airline#extensions#wordcount#enabled = 0
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Visual style
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-
-au BufNewFile,BufRead *.py
-    \ set tabstop=4 |
-    \ set softtabstop=4 |
-    \ set shiftwidth=4 |
-    "\ set textwidth=79 |
-    \ set expandtab |
-    \ set autoindent |
-    \ set fileformat=unix
-
-"Colour bad whitespace red
-
-"highlight BadWhitespace ctermbg=red guibg=darkred
-"au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
-
-
