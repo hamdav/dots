@@ -265,15 +265,3 @@ augroup END
 " Do not format on save 
 let g:autopep8_on_save = 0
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Airline configuration
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"let g:airline_section_z = ''
-"let g:airline_section_b = ''
-"let g:airline_section_c = ''
-"let g:airline_section_y = ''
-"let g:airline_section_x = ''
-"let g:airline_section_error = airline#section#create_right(['syntastic-warn'])
-"let g:airline_section_warning = ''
-"let g:airline#extensions#wordcount#enabled = 0
