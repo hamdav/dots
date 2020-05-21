@@ -1,0 +1,21 @@
+[user]
+	name = David Hambraeus
+	email = Ddhambraeus@gmail.com
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[merge]
+	tool = kdiff3
+[commit]
+    verbose=true
+[mergetool]
+	keepBackup = false
+[mergetool "kdiff3"]
+    path = /Applications/kdiff3.app/Contents/MacOS/kdiff3
+    trustExitCode = false
+[mergetool "fugitive"]
+    cmd = vim -f -c "Gdiff" "$MERGED"
+[credential]
+	helper = store
