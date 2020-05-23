@@ -35,6 +35,7 @@ set $thick 24
 
 # FLOATING APPLICATIONS
 for_window [class="feh"] floating enable
+for_window [class="Gifview"] floating enable
 for_window [class="Qalculate-gtk"] floating enable
 for_window [class="Matplotlib"] floating enable
 for_window [class="MATLAB R2019a - academic use"] floating enable
