@@ -10,7 +10,8 @@ call plug#begin('~/.vim/plugged')
     " No BS code folding for python
 Plug 'tmhedberg/SimpylFold'
     " Better python indentation
-Plug 'vim-scripts/indentpython.vim'
+" Plug 'vim-scripts/indentpython.vim'
+Plug 'Vimjas/vim-python-pep8-indent'
     " Auto pep8
 Plug 'tell-k/vim-autopep8'
     " Autocomplete
@@ -22,9 +23,6 @@ Plug 'vim-latex/vim-latex'
 "Plug 'whiteinge/diffconflicts'
     " Git commands
 Plug 'tpope/vim-fugitive'
-    " Better statusline and tabline
-"Plug 'vim-airline/vim-airline'
-"Plug 'vim-airline/vim-airline-themes'
 
 " Syntax error checking. 
 Plug 'vim-syntastic/syntastic'
@@ -40,10 +38,11 @@ Plug 'morhetz/gruvbox'
 Plug 'ciaranm/inkpot'
 Plug 'xiaody/thornbird.vim'
 Plug 'sjl/badwolf'
+Plug 'joshdick/onedark.vim'
 
 " Syntax highlighting
     " Python
-Plug 'hdima/python-syntax'
+Plug 'vim-python/python-syntax'
     " Syntax highlighting and indentation for haskell
 Plug 'neovimhaskell/haskell-vim'
 
@@ -67,8 +66,8 @@ filetype indent on
 " Set to auto read when a file is changed from the outside
 set autoread
 
-" Set leader
-let mapleader = ","
+" Set leader (this is the default)
+let mapleader = '\'
 
 " Set encoding
 set encoding=utf-8
