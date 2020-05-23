@@ -10,6 +10,9 @@ let g:Tex_DefaultTargetFormat = 'pdf'
 " Compile as many times as needed when compiling pdf
 let g:Tex_MultipleCompileFormats = 'dvi,pdf'
 
+" Set biblatex flavour to biber
+let g:Tex_BibtexFlavor = 'biber'
+
 " Set compile rule. OBS option -shell-escape lets latex run commands in
 " terminal
 let g:Tex_CompileRule_pdf = 'pdflatex -interaction=nonstopmode -shell-escape $*'
@@ -19,3 +22,4 @@ let g:Tex_Leader = '§'
 
 " Enable alt-key bindings in vim latex.
 let g:Tex_AdvancedMath = 1
+
