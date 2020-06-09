@@ -1,7 +1,6 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vim-plug
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 call plug#begin('~/.vim/plugged')
 
 " add all your plugins here 
@@ -10,7 +9,8 @@ call plug#begin('~/.vim/plugged')
     " No BS code folding for python
 Plug 'tmhedberg/SimpylFold'
     " Better python indentation
-Plug 'vim-scripts/indentpython.vim'
+" Plug 'vim-scripts/indentpython.vim'
+Plug 'Vimjas/vim-python-pep8-indent'
     " Auto pep8
 Plug 'tell-k/vim-autopep8'
     " Autocomplete
@@ -22,9 +22,6 @@ Plug 'vim-latex/vim-latex'
 "Plug 'whiteinge/diffconflicts'
     " Git commands
 Plug 'tpope/vim-fugitive'
-    " Better statusline and tabline
-"Plug 'vim-airline/vim-airline'
-"Plug 'vim-airline/vim-airline-themes'
 
 " Syntax error checking. 
 Plug 'vim-syntastic/syntastic'
@@ -40,12 +37,16 @@ Plug 'morhetz/gruvbox'
 Plug 'ciaranm/inkpot'
 Plug 'xiaody/thornbird.vim'
 Plug 'sjl/badwolf'
+Plug 'joshdick/onedark.vim'
+Plug 'challenger-deep-theme/vim'
 
 " Syntax highlighting
     " Python
-Plug 'hdima/python-syntax'
+Plug 'vim-python/python-syntax'
     " Syntax highlighting and indentation for haskell
 Plug 'neovimhaskell/haskell-vim'
+    " Rainbow parenthesis
+Plug 'luochen1990/rainbow'
 
 " Concealment for haskell
 " Plug enomsg/vim-haskellConcealPlus
@@ -67,8 +68,8 @@ filetype indent on
 " Set to auto read when a file is changed from the outside
 set autoread
 
-" Set leader
-let mapleader = ","
+" Set leader (this is the default)
+let mapleader = '\'
 
 " Set encoding
 set encoding=utf-8
@@ -132,11 +133,10 @@ let python_highlight_all=1
 syntax on
 
 " Set colorscheme
-colorscheme gruvbox
+colorscheme my_challenger_deep
 
-"set dark mode for gruvbox
-set background=dark
-
+" Let challenger_deep do italics even in terminal
+let g:challenger_deep_terminal_italics = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Statusline
@@ -174,10 +174,11 @@ function! GetWC()
 endfunction
 
 " Define some highlight groups to display nice colors
-hi Base ctermbg=238 ctermfg=208 guibg=#444444 guifg=#ff8700
+hi link Base Normal
 "hi ColCol ctermbg=235 ctermfg=245
-hi SepCol ctermbg=238 ctermfg=39 cterm=bold gui=bold guibg=#444444 guifg=#00afff
-hi GitCol ctermbg=235 ctermfg=35 guibg=#262626 guifg=#00af5f
+" hi SepCol ctermbg=238 ctermfg=39 cterm=bold gui=bold guibg=#444444 guifg=#00afff
+hi SepCol ctermfg=39 cterm=bold gui=bold guifg=#00afff
+hi GitCol ctermfg=35 guifg=#00af5f
 
 " Create the statusline
 set statusline=""
@@ -253,8 +254,8 @@ let g:syntastic_python_checkers = ['flake8']
 " => vim-autopep8
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Disabel show diff window
-let g:autopep8_disabe_show_diff=0
+" Disable show diff window
+let g:autopep8_disabe_show_diff=1
 
 " Map it to the f8 key
 augroup Autopep8cmds
