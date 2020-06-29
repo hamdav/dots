@@ -24,7 +24,8 @@ Plug 'vim-latex/vim-latex'
 Plug 'tpope/vim-fugitive'
 
 " Syntax error checking. 
-Plug 'vim-syntastic/syntastic'
+" Plug 'vim-syntastic/syntastic'
+Plug 'dense-analysis/ale'
     " The plugin needs external syntax checkers
     " Checker for python syntax and style
 " Plug 'nvie/vim-flake8'
@@ -49,7 +50,7 @@ Plug 'neovimhaskell/haskell-vim'
 Plug 'luochen1990/rainbow'
 
 " Concealment for haskell
-" Plug enomsg/vim-haskellConcealPlus
+Plug 'enomsg/vim-haskellConcealPlus'
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -133,10 +134,17 @@ let python_highlight_all=1
 syntax on
 
 " Set colorscheme
-colorscheme my_challenger_deep
+"colorscheme my_challenger_deep
+colorscheme onedark
 
 " Let challenger_deep do italics even in terminal
 let g:challenger_deep_terminal_italics = 1
+
+" Options for haskell concealing
+let hscouptions="s𝐌"
+
+" Rainbow parentheses
+let g:rainbow_active = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Statusline
@@ -177,14 +185,15 @@ endfunction
 hi link Base Normal
 "hi ColCol ctermbg=235 ctermfg=245
 " hi SepCol ctermbg=238 ctermfg=39 cterm=bold gui=bold guibg=#444444 guifg=#00afff
+hi FileName ctermfg=208 guifg=#ff8700
 hi SepCol ctermfg=39 cterm=bold gui=bold guifg=#00afff
 hi GitCol ctermfg=35 guifg=#00af5f
 
 " Create the statusline
-set statusline=""
+set statusline=%#Base#
 set statusline+=%#LineNr#
 set statusline+=%3c
-set statusline+=%#SepCol#%{'\ «\ '}%#Base#
+set statusline+=%#SepCol#%{'\ «\ '}%#FileName#
 set statusline+=%t      " Filename
 set statusline+=%1m     " Modified flag
 set statusline+=%1r     " Read-Only flag
@@ -245,10 +254,12 @@ let g:ycm_autoclose_preview_window_after_insertion=1
 map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Syntastic customization
+" => ALE customization
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:syntastic_python_checkers = ['flake8']
+nmap <F9> <Plug>(ale_detail)
+nmap <leader>n <Plug>(ale_next)
+nmap <leader>p <Plug>(ale_previous)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vim-autopep8
