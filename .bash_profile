@@ -7,7 +7,7 @@
 
 alias ls='ls -GFh'
 alias la='ls -a'
-PS1='\[\e[1;33m\]\u\[\e[1;34m\] \W\[\e[1;0m\] \$ '
+PS1='\[\e[1;35m\]\u\[\e[1;34m\] \W\[\e[1;0m\] \$ '
 
 # For the tracking of dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.myconf --work-tree=$HOME'
