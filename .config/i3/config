@@ -41,8 +41,8 @@ for_window [class="Matplotlib"] floating enable
 for_window [class="MATLAB R2019a - academic use"] floating enable
 
 # GAP VARIABLES
-set $inner 20
-set $outer 10
+set $inner 4
+set $outer 6
 
 # SET GAPS
 gaps inner $inner
