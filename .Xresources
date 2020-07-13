@@ -1,12 +1,4 @@
 
-
-! --- ~/.Xresources ------------------------------------------------------------
-! ------------------------------------------------------------------------------
-! --- generated with 4bit Terminal Color Scheme Designer -----------------------
-! ------------------------------------------------------------------------------
-! --- http://ciembor.github.com/4bit -------------------------------------------
-! ------------------------------------------------------------------------------
-
 ! --- special colors ---
 
 *background: #101010
@@ -16,50 +8,27 @@
 
 ! black
 *color0: #000000
-
-! bright_black
 *color8: #202020
-
 ! red
 *color1: #dc571a
-
-! bright_red
 *color9: #e6793d
-
 ! green
 *color2: #8ea01f
-
-! bright_green
 *color10: #b2aa41
-
 ! yellow
 *color3: #d7a01a
-
-! bright_yellow
 *color11: #e2aa3d
-
 ! blue
 *color4: #935268
-
-! bright_blue
 *color12: #b57672
-
 ! magenta
 *color5: #dc5262
-
-! bright_magenta
 *color13: #e6766e
-
 ! cyan
 *color6: #8e9a68
-
-! bright_cyan
 *color14: #b2a672
-
 ! white
 *color7: #d5d5d5
-
-! bright_white
 *color15: #ffffff
 
 ! Fake transparency
@@ -67,12 +36,9 @@
 !URxvt*shading:		30
 
 !! URxvt Appearance
-! URxvt.font: xft:Inconsolata Nerd Font Mono:size=12
-URxvt.font: xft:Hack:size=12
-! URxvt.italicFont: xft:Hack:size=10
-!xft:FontAwesome:pixelsize=15
-URxvt.letterSpace: 0
-URxvt.lineSpace: 0
+URxvt.font: xft:mononoki,xft:FreeSerif monospacified for mononoki
+!URxvt.letterSpace: 0
+!URxvt.lineSpace: 0
 URxvt.internalBorder: 0
 URxvt.cursorBlink: true
 URxvt.cursorUnderline: false
