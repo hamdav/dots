@@ -18,10 +18,10 @@ Plug 'Valloric/YouCompleteMe'
 "Plug 'maralla/completor.vim'
     " Latex tools
 Plug 'vim-latex/vim-latex'
-    " Git mergetool
-"Plug 'whiteinge/diffconflicts'
     " Git commands
 Plug 'tpope/vim-fugitive'
+    " Haskell code folding
+Plug 'twinside/vim-haskellfold'
 
 " Syntax error checking. 
 " Plug 'vim-syntastic/syntastic'
