@@ -1,5 +1,4 @@
 ##### i3-config / DARCH  #######################
-#
 
 ##### GENERAL ##################################### 
 
@@ -7,7 +6,8 @@ set $mod Mod4
 
 # font pango: monospace 8
 # font pango: Inconsolata Nerd Font Mono 12
-font pango: Inconsolata 12
+# font pango: Inconsolata 12
+font pango: Terminus 10
 
 # APP VARIABLES
 set $browser	firefox
@@ -24,8 +24,8 @@ set $center move absolute position center
 floating_modifier $mod
 
 # DEFAULT BORDER
-for_window [class="^.*"] border pixel 0
-for_window [title="^.*"] border pixel 0
+for_window [class="^.*"] border pixel 3
+#for_window [title="^.*"] border pixel 0
 
 # APPLICATION BORDERS
 set $thick 24
@@ -35,6 +35,7 @@ set $thick 24
 
 # FLOATING APPLICATIONS
 for_window [class="feh"] floating enable
+for_window [class="Conky"] floating enable
 for_window [class="Gifview"] floating enable
 for_window [class="Qalculate-gtk"] floating enable
 for_window [class="Matplotlib"] floating enable
@@ -42,7 +43,7 @@ for_window [class="MATLAB R2019a - academic use"] floating enable
 
 # GAP VARIABLES
 set $inner 4
-set $outer 6
+set $outer 4
 
 # SET GAPS
 gaps inner $inner
@@ -86,6 +87,11 @@ bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
+
+bindsym $mod+a focus parent
+bindsym $mod+Shift+a focus child
+bindsym $mod+Shift+space focus mode_toggle
+
 
 # MOVE
 bindsym $mod+Shift+h move left
@@ -155,9 +161,6 @@ bindsym $mod+f fullscreen toggle
 # TOGGLE FLOATING
 bindsym $mod+space floating toggle; $center
 
-# MODE TOGGLE
-bindsym $mod+Shift+space focus mode_toggle
-
 # PAPER MODE
 #bindsym $mod+Ctrl+space floating toggle; resize set 700px 975px; $center
 
@@ -167,16 +170,27 @@ bindsym $mod+Shift+space focus mode_toggle
 ##### WORKSPACES ##################################
 
 # WORKSPACES
-set $ws1 "1: Browser "
-set $ws2 "2: Vim ﯑"
-set $ws3 "3: Terminal "
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
+#set $ws1 "1: Browser "
+#set $ws2 "2: Vim ﯑"
+#set $ws3 "3: Terminal "
+#set $ws4 "4"
+#set $ws5 "5"
+#set $ws6 "6"
+#set $ws7 "7"
+#set $ws8 "8"
+#set $ws9 "9"
+#set $ws10 "10"
+set $ws1 "1:I"
+set $ws2 "2:II"
+set $ws3 "3:III"
+set $ws4 "4:IV"
+set $ws5 "5:V"
+set $ws6 "6:VI"
+set $ws7 "7:VII"
+set $ws8 "8:VIII"
+set $ws9 "9:IX"
+set $ws10 "10:X"
+
 
 # Exampel on how to name with color
 # set $ws9 9:<span foreground="red">vim</span>
@@ -212,15 +226,30 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 ##### COLORS #######################################
 
 # XRESOURCES
-#set_from_resource $bg background
-#set_from_resource $fg foreground
+set_from_resource $bg background
+set_from_resource $fg foreground
 
-# CLASS                 BORDER  BACK    TEXT    INDICATOR
-#client.focused          $bg     $bg     $bg     $bg
-#client.focused_inactive $bg     $bg     $bg     $bg 
-#client.unfocused        $bg     $bg     $bg     $bg
-#client.urgent           $bg     $bg     $bg     $bg 
-#client.placeholder      $bg     $bg     $bg     $bg 
+# Colors 
+#set $bg #101010
+#set $fg #d9e6f2
+
+set $black #000000
+set $darkgrey #101010
+set $red #dc571a
+set $green #8ea01f
+set $yellow #d7a01a
+set $orange #dc821a
+set $blue #935268
+set $magenta #dc5262
+set $cyan #8e9a68
+set $white #ffffff
+
+# CLASS                 BORDER  BACKG.  TEXT    INDICAT CHILD BORDER
+client.focused          $bg     $yellow $bg     $yellow $yellow
+client.focused_inactive $bg     $bg     $bg     $bg     $bg 
+client.unfocused        $bg     $bg     $bg     $bg     $bg
+client.urgent           $bg     $bg     $bg     $bg     $bg
+client.placeholder      $bg     $bg     $bg     $bg     $bg
 
 ##### TOOLS ########################################
 
@@ -290,21 +319,6 @@ bindsym $mod+n       exec $browser
 
 ##### BAR #########################################
 
-# Colors 
-
-set $bg #101010
-set $fg #d9e6f2
-
-set $black #000000
-set $darkgrey #101010
-set $red #dc571a
-set $green #8ea01f
-set $yellow #d7a01a
-set $orange #dc821a
-set $blue #935268
-set $magenta #dc5262
-set $cyan #8e9a68
-set $white #ffffff
 
 bar {
 	mode hide
@@ -336,8 +350,4 @@ exec_always --no-startup-id picom
 #exec --no-startup-id $term
 exec --no-startup-id dropbox start
 exec --no-startup-id redshift
-#exec ~/.Conky/startconky.sh
 #exec_always --no-startup-id xautolock -time 5 -locker '~/.i3lockscript/blurshot.sh'
-
-#TODO Fix conky
-
