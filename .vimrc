@@ -48,6 +48,8 @@ Plug 'vim-python/python-syntax'
 Plug 'neovimhaskell/haskell-vim'
     " Rainbow parenthesis
 Plug 'luochen1990/rainbow'
+    " OpenGL Shader Language
+Plug 'tikhomirov/vim-glsl'
 
 " Concealment for haskell
 Plug 'enomsg/vim-haskellConcealPlus'
