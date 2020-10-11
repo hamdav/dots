@@ -5,6 +5,8 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+PATH=$PATH":/home/david/.local/bin"
+
 alias ls='ls --color=auto'
 alias la='ls -a'
 PS1='\[\e[1;32m\]\u\[\e[1;34m\] \W\[\e[1;0m\]\$ '
