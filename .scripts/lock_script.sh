@@ -38,7 +38,7 @@ i3lock --force-clock \
     --timestr="%H:%M:%S" \
     --timepos="w/5:2*h/3" \
     --datecolor=$DARKGREY \
-    --datestr="%A, %m %Y" \
+    --datestr="%A %d %B %Y" \
     --timesize=90 \
     --datesize=14 \
     --datepos="tx:ty+h/20" \
