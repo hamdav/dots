@@ -223,6 +223,10 @@ bindsym $mod+Shift+0 move container to workspace $ws10
  workspace $ws1 gaps inner 0
  workspace $ws1 gaps outer 0
 
+ # SCRATCHPAD
+ bindsym $mod+p move scratchpad
+ bindsym $mod+o scratchpad show
+
 ##### COLORS #######################################
 
 # XRESOURCES
