@@ -40,6 +40,7 @@ Plug 'xiaody/thornbird.vim'
 Plug 'sjl/badwolf'
 Plug 'joshdick/onedark.vim'
 Plug 'challenger-deep-theme/vim'
+Plug 'KeitaNakamura/neodark.vim'
 
 " Syntax highlighting
     " Python
@@ -135,15 +136,12 @@ set mat=2
 let python_highlight_all=1
 syntax on
 
-let g:onedark_color_overrides = {
-\ "black": {"gui": "#2F343F", "cterm": "0", "cterm16": "0" }
-\}
-" Set colorscheme
-"colorscheme my_challenger_deep
-colorscheme onedark
+" Respect terminal background
+let g:neodark#terminal_transparent = 1 " default: 0
 
-" Let onedark do italics even in terminal
-let g:onedark_terminal_italics = 1
+" Set colorscheme
+colorscheme neodark
+
 
 " Options for haskell concealing
 let hscouptions="s𝐌"

@@ -12,7 +12,7 @@ font pango: Terminus 10
 # APP VARIABLES
 set $browser	firefox
 set $music  	spotify
-set $term   	urxvt
+set $term   	~/.scripts/urxvt_random_bg.sh
 
 # DIR VARIABLES
 set $bin ~/bin
