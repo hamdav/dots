@@ -14,10 +14,15 @@ Plug 'Vimjas/vim-python-pep8-indent'
     " Auto pep8
 Plug 'tell-k/vim-autopep8'
     " Autocomplete
-Plug 'Valloric/YouCompleteMe'
+"Plug 'Valloric/YouCompleteMe'
 "Plug 'maralla/completor.vim'
+" The following three are needed for deoplete if you are not using neovim
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
     " Latex tools
 Plug 'vim-latex/vim-latex'
+Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'}
     " Git mergetool
 "Plug 'whiteinge/diffconflicts'
     " Git commands
@@ -245,13 +250,19 @@ set backspace=indent,eol,start
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "Makes the autocomplete window go away after completion
-let g:ycm_autoclose_preview_window_after_completion=0
+"let g:ycm_autoclose_preview_window_after_completion=0
 
 "Makes the autocomplete window go away after exited insert mode
-let g:ycm_autoclose_preview_window_after_insertion=1
+"let g:ycm_autoclose_preview_window_after_insertion=1
 
 "Define shorcut for goto definition
-map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+"map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Deoplete customization
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:deoplete#enable_at_startup = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => ALE customization

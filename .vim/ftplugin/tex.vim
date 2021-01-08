@@ -1,5 +1,8 @@
-" Set indentation to 2 
-set sw=2
+" Set indentation to 4
+set sw=4
+
+" Enable spellcheck
+set spell
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vim-latex
@@ -38,3 +41,10 @@ let g:Tex_Leader = '§'
 
 " Enable alt-key bindings in vim latex.
 let g:Tex_AdvancedMath = 1
+
+" #########  tex-conceal configurations ##########
+" Conceal fractions (½ ⅓ ⅔ ¼ ⅕ ⅖ ⅗ ⅘ ⅙ ⅚ ⅛ ⅜ ⅝ ⅞)
+let g:tex_conceal_frac = 1
+
+set conceallevel=2
+let g:tex_conceal="abdgm"
