@@ -22,7 +22,7 @@ compinit
 setopt nocaseglob
 
 # share history across multiple zsh sessions
-setopt SHARE_HISTORY
+setopt NO_SHARE_HISTORY
 # append to history
 setopt APPEND_HISTORY
 # adds commands as they are typed, not at shell exit
