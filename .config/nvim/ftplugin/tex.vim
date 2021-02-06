@@ -3,6 +3,14 @@ set sw=4
 
 " Enable spellcheck
 set spell
+set spelllang=sv
+
+" Enable spell fixing with CTRL+s
+" <c-g>u make undo block, lasts untill next <c-g>u, exit insert mode, 
+" [s go to last misspelled word
+" 1z= replace with first suggestion, `] go to the end of the last changed text
+imap <c-s> <c-g>u<Esc>[s1z=`]a<c-g>u
+nmap <c-s> [s1z=<c-o>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vim-latex
@@ -42,7 +50,9 @@ let g:Tex_Leader = '§'
 " Enable alt-key bindings in vim latex.
 let g:Tex_AdvancedMath = 1
 
-" #########  tex-conceal configurations ##########
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => tex-conceal
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Conceal fractions (½ ⅓ ⅔ ¼ ⅕ ⅖ ⅗ ⅘ ⅙ ⅚ ⅛ ⅜ ⅝ ⅞)
 let g:tex_conceal_frac = 1
 
