@@ -21,4 +21,4 @@
     path = /Applications/Meld.app/Contents/MacOS/Meld
     trustExitCode = false
 [core]
-	editor = vim
+	editor = nvim
