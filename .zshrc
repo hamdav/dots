@@ -33,7 +33,7 @@ setopt correct
 setopt correctall
 
 # 10ms for key sequences
-export KEYTIMEOUT=1
+#export KEYTIMEOUT=1
 
 ########################
 #        Prompt
@@ -61,6 +61,11 @@ alias la='ls -a'
 # For the tracking of dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.myconf --work-tree=$HOME'
 
+# For todo.txt
+alias t='todo.sh'
+
+alias todowin='nohup kitty --config ~/.config/kitty/kittytodo.conf > /dev/null 2>&1 &'
+
 ########################
 #        Plugins
 ########################
@@ -78,4 +83,17 @@ source "$HOME/.zinit/bin/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
-zinit load 'Nyquase/vi-mode'
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zinit-zsh/z-a-rust \
+    zinit-zsh/z-a-as-monitor \
+    zinit-zsh/z-a-patch-dl \
+    zinit-zsh/z-a-bin-gem-node
+
+### End of Zinit's installer chunk
+
+
+zinit load 'softmoth/zsh-vim-mode'
+[ -f "/Users/davidhambraeus/.ghcup/env" ] && source "/Users/davidhambraeus/.ghcup/env" # ghcup-env
