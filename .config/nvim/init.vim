@@ -1,7 +1,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vim-plug
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 
 " add all your plugins here 
 " Plug 'monkey/bananas' is shorthand for 
@@ -60,7 +60,7 @@ Plug 'xiaody/thornbird.vim'
 Plug 'sjl/badwolf'
 Plug 'joshdick/onedark.vim'
 Plug 'challenger-deep-theme/vim'
-Plug 'KietaNakamura/neodark.vim'
+Plug 'KeitaNakamura/neodark.vim'
 
     " Rainbow parenthesis
 Plug 'luochen1990/rainbow'
