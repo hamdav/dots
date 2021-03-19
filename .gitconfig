@@ -7,7 +7,7 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 [merge]
-	tool = kdiff3
+	tool = fugitive
 [commit]
     verbose=true
 [mergetool]
@@ -15,9 +15,9 @@
 [mergetool "kdiff3"]
     trustExitCode = false
 [mergetool "fugitive"]
-    cmd = vim -f -c "Gdiff" "$MERGED"
+    cmd = nvim -f -c "Gvdiffsplit!" "$MERGED"
 [core]
-	editor = vim
+	editor = nvim
 [credential]
 	helper = store
 [pull]
