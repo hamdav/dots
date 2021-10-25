@@ -97,3 +97,32 @@ zinit light-mode for \
 
 zinit load 'softmoth/zsh-vim-mode'
 [ -f "/Users/davidhambraeus/.ghcup/env" ] && source "/Users/davidhambraeus/.ghcup/env" # ghcup-env
+
+########################
+#        Export variables
+########################
+
+# Use stuff from homebrew
+export PATH="/usr/local/sbin:$PATH"
+
+# Use stuff in /usr/local/bin before checking /usr/bin
+export PATH="/usr/local/bin:$PATH"
+
+# Use pudb instead of pdb when writing breakpoint() in a python script
+export PYTHONBREAKPOINT="pudb.set_trace"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/davidhambraeus/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/davidhambraeus/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/davidhambraeus/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/davidhambraeus/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
