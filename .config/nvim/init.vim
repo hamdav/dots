@@ -11,6 +11,14 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'Shougo/deoplete.nvim'
     " display function signatures
 Plug 'Shougo/echodoc.vim'
+    " Snippets
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
+" For easier commenting
+Plug 'tpope/vim-commentary'
+" surroundings, brackets quotes etc
+Plug 'tpope/vim-surround'
 
 " Syntax error checking. 
     " Note that ale needs external checkers
@@ -42,13 +50,16 @@ Plug 'Shougo/deoplete-clangx'
 
 " Latex stuff
     " The one and only
-Plug 'vim-latex/vim-latex'
+"Plug 'vim-latex/vim-latex'
+Plug 'lervag/vimtex'
     "concealment <3"
-Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'}
+"Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'}
 
     " Git commands
 Plug 'tpope/vim-fugitive'
 
+" Vim wiki - personal wiki
+Plug 'vimwiki/vimwiki'
 
 
 " Color schemes
@@ -147,11 +158,11 @@ set mat=2
 let python_highlight_all=1
 syntax on
 
-" Respect terminal background
-let g:neodark#terminal_transparent = 1 " default: 0
+" Respect terminal background, only for neodark colorscheme
+" let g:neodark#terminal_transparent = 0 " default: 0
 
 " Set colorscheme
-colorscheme neodark
+colorscheme challenger_deep
 
 " Options for haskell concealing
 let hscouptions="s𝐌"
@@ -225,8 +236,8 @@ set statusline+=\
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Use spaces instead of tabs
-set expandtab
+" Use tabs instead of spaces
+set noexpandtab
 
 " Be smart when using tabs ;)
 set smarttab
@@ -253,6 +264,14 @@ map <S-Enter> O<ESC>
 " Let backspace remove indents and eols
 set backspace=indent,eol,start
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vimwiki customization
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:vimwiki_list = [{'path': '~/Hive/thewiki',
+                      \ 'path_html': '~/Hive/thewiki_html'}]
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => YouCompleteMe customization
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -274,14 +293,14 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#jedi#show_docstring=1
 
 " Use tab for completion instead of CTRL+N
-inoremap <silent><expr> <TAB>
-    \ pumvisible() ? "\<C-n>" :
-    \ <SID>check_back_space() ? "\<TAB>" :
-    \ deoplete#mappings#manual_complete()
-function! s:check_back_space() abort "{{{
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~ '\s'
-endfunction"}}}
+" inoremap <silent><expr> <TAB>
+"     \ pumvisible() ? "\<C-n>" :
+"     \ <SID>check_back_space() ? "\<TAB>" :
+"     \ deoplete#mappings#manual_complete()
+" function! s:check_back_space() abort "{{{
+"     let col = col('.') - 1
+"     return !col || getline('.')[col - 1]  =~ '\s'
+" endfunction"}}}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Echodoc customization
@@ -298,6 +317,16 @@ set cmdheight=2
 nmap <F9> <Plug>(ale_detail)
 nmap <leader>n <Plug>(ale_next)
 nmap <leader>p <Plug>(ale_previous)
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => UltiSnips customization
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "MySnippets"]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vim-autopep8
