@@ -94,3 +94,21 @@ zinit light-mode for \
 #
 zinit load 'softmoth/zsh-vim-mode'
 
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/david/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/david/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/david/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/david/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+# This is for some wierd reason needed for the python prompt making backspace work as it should
+export TERMINFO=/usr/share/terminfo
