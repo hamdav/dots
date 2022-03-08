@@ -108,6 +108,9 @@ export PATH="/usr/local/sbin:$PATH"
 # Use stuff in /usr/local/bin before checking /usr/bin
 export PATH="/usr/local/bin:$PATH"
 
+# Finding voltron. Put it last because I don't know what else is there
+export PATH="$PATH:/Users/davidhambraeus/Library/Python/3.8/bin"
+
 # Use pudb instead of pdb when writing breakpoint() in a python script
 export PYTHONBREAKPOINT="pudb.set_trace"
 
