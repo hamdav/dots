@@ -5,6 +5,9 @@ set sw=4
 set spell
 set spelllang=en
 
+" Set the maximum textwidth to 80
+set textwidth=80
+
 " Enable spell fixing with CTRL+s
 " <c-g>u make undo block, lasts untill next <c-g>u, exit insert mode, 
 " [s go to last misspelled word

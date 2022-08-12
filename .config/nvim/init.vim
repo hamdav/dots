@@ -292,6 +292,9 @@ let g:vimwiki_list = [{'path': '~/Hive/thewiki',
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#jedi#show_docstring=1
 
+" This makes ultisnips show up higher in the list of suggestions
+call deoplete#custom#source('ultisnips', 'rank', 1000)
+
 " Use tab for completion instead of CTRL+N
 " inoremap <silent><expr> <TAB>
 "     \ pumvisible() ? "\<C-n>" :
