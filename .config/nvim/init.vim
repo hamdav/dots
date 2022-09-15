@@ -58,9 +58,6 @@ Plug 'lervag/vimtex'
     " Git commands
 Plug 'tpope/vim-fugitive'
 
-" Vim wiki - personal wiki
-Plug 'vimwiki/vimwiki'
-
 
 " Color schemes
 Plug 'nanotech/jellybeans.vim'
@@ -266,13 +263,6 @@ set backspace=indent,eol,start
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => vimwiki customization
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-let g:vimwiki_list = [{'path': '~/Hive/thewiki',
-                      \ 'path_html': '~/Hive/thewiki_html'}]
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => YouCompleteMe customization
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -311,7 +301,6 @@ call deoplete#custom#source('ultisnips', 'rank', 1000)
 
 let g:echodoc#enable_at_startup=1
 let g:echodoc#type = 'floating'
-set cmdheight=2
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => ALE customization
