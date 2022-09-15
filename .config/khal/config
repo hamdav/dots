@@ -1,0 +1,30 @@
+[calendars]
+
+	[[life]]
+		path = /Users/davidhambraeus/Hive/Life_of_Me/Calendars/life
+		type = calendar
+		color = dark green
+		priority = 20
+
+	[[daily]]
+		path = /Users/davidhambraeus/Hive/Life_of_Me/Calendars/daily
+		type = calendar
+		color = dark red
+		priority = 5
+
+	[[landscape]]
+		path = /Users/davidhambraeus/Hive/Life_of_Me/Calendars/landscape
+		type = calendar
+		color = dark gray
+		priority = 10
+
+[locale]
+	timeformat = %H:%M
+	dateformat = %Y-%m-%d
+	longdateformat = %Y-%m-%d
+	datetimeformat = %Y-%m-%d %H:%M
+	longdatetimeformat = %Y-%m-%d %H:%M
+
+[default]
+	default_calendar = life
+	highlight_event_days = True
