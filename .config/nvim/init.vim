@@ -96,6 +96,9 @@ let mapleader = '\'
 " Set encoding
 set encoding=utf-8
 
+" set python provider
+let g:python3_host_prog = '~/miniconda3/bin/python'
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
