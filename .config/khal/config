@@ -1,19 +1,19 @@
 [calendars]
 
 	[[life]]
-		path = /Users/davidhambraeus/Hive/Life_of_Me/Calendars/life
+		path = /Users/davidhambraeus/Nest/markdownwiki/Areas/LifeOrganization/Calendars/life
 		type = calendar
 		color = dark green
 		priority = 20
 
 	[[daily]]
-		path = /Users/davidhambraeus/Hive/Life_of_Me/Calendars/daily
+		path = /Users/davidhambraeus/Nest/markdownwiki/Areas/LifeOrganization/Calendars/daily
 		type = calendar
 		color = dark red
 		priority = 5
 
 	[[landscape]]
-		path = /Users/davidhambraeus/Hive/Life_of_Me/Calendars/landscape
+		path = /Users/davidhambraeus/Nest/markdownwiki/Areas/LifeOrganization/Calendars/landscape
 		type = calendar
 		color = dark gray
 		priority = 10
@@ -26,5 +26,5 @@
 	longdatetimeformat = %Y-%m-%d %H:%M
 
 [default]
-	default_calendar = life
+	default_calendar = daily
 	highlight_event_days = True

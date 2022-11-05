@@ -66,6 +66,11 @@ alias t='todo.sh'
 
 alias todowin='nohup kitty --config ~/.config/kitty/kittytodo.conf > /dev/null 2>&1 &'
 
+# For inbox
+alias inbox='nvim ~/Nest/markdownwiki/Areas/LifeOrganization/inbox.md'
+# and longlist
+alias longlist='python ~/Nest/markdownwiki/Areas/LifeOrganization/Longlist/longlist.py'
+
 ########################
 #        Plugins
 ########################
