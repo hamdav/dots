@@ -32,6 +32,7 @@ setopt INC_APPEND_HISTORY
 setopt correct
 setopt correctall
 
+
 ########################
 #        Prompt
 ########################
@@ -65,6 +66,12 @@ alias config='/usr/bin/git --git-dir=$HOME/.myconf --work-tree=$HOME'
 # For running matlab without gui
 alias natlab='/usr/local/bin/matlab -nodesktop'
 
+# Longlist
+alias longlist='/usr/bin/python /home/david/Nest/markdownwiki/Areas/LifeOrganization/Longlist/longlist.py /home/david/Nest/markdownwiki/Areas/LifeOrganization/Longlist/longlist.txt'
+
+# inbox
+alias inbox='nvim /home/david/Nest/markdownwiki/Areas/LifeOrganization/inbox.md'
+
 ########################
 #        Plugins
 ########################
@@ -94,7 +101,6 @@ zinit light-mode for \
 #
 zinit load 'softmoth/zsh-vim-mode'
 
-
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/david/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -110,5 +116,9 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+
 # This is for some wierd reason needed for the python prompt making backspace work as it should
 export TERMINFO=/usr/share/terminfo
+
+# Set breakpoint() in Python to call pudb
+export PYTHONBREAKPOINT="pudb.set_trace"

@@ -1,0 +1,30 @@
+[calendars]
+
+	[[life]]
+		path = /home/david/Nest/markdownwiki/Areas/LifeOrganization/Calendars/life
+		type = calendar
+		color = dark green
+		priority = 20
+
+	[[daily]]
+		path = /home/david//Nest/markdownwiki/Areas/LifeOrganization/Calendars/daily
+		type = calendar
+		color = dark red
+		priority = 5
+
+	[[landscape]]
+		path = /home/david/Nest/markdownwiki/Areas/LifeOrganization/Calendars/landscape
+		type = calendar
+		color = dark gray
+		priority = 10
+
+[locale]
+	timeformat = %H:%M
+	dateformat = %Y-%m-%d
+	longdateformat = %Y-%m-%d
+	datetimeformat = %Y-%m-%d %H:%M
+	longdatetimeformat = %Y-%m-%d %H:%M
+
+[default]
+	default_calendar = daily
+	highlight_event_days = True
