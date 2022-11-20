@@ -1,0 +1,58 @@
+{
+	"layer": "top",
+	"modules-left": ["wlr/workspaces"],
+	"modules-center": [],
+	"modules-right": ["network", "pulseaudio", "battery", "backlight", "clock"],
+	"pulseaudio": {
+		"tooltip": false,
+		"scroll-step": 5,
+		"format": "{icon} {volume}%",
+		"format-icons": {
+			"default": ["奄", "奔", "墳"]
+		},
+		"format-muted": "({volume}%)",
+		"on-click": "kitty -e alsamixer"
+	},
+	"wlr/workspaces": {
+		"format": "{icon}",
+		"sort-by-number": true,
+		"on-click": "activate"
+	},
+	"battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
+    },
+	"clock": {
+        "format": "{:%d %b - %H:%M}"
+    },
+	"network": {
+		"tooltip": false,
+		"format-wifi": " {essid}",
+		"format-ethernet": " {ipaddr}",
+		"on-click": "nm-connection-editor"
+	},
+	"backlight": {
+		"device": "intel_backlight",
+		"format": "{percent}% {icon}",
+		"format-icons": [""]
+	},
+	"cpu": {
+		"tooltip": false,
+		"format": " {}%"
+	},
+	"memory": {
+		"tooltip": false,
+		"format": " {}%"
+	},
+}
+
