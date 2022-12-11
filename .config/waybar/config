@@ -33,7 +33,8 @@
         "format-icons": ["", "", "", "", ""]
     },
 	"clock": {
-        "format": "{:%d %b - %H:%M}"
+        "format": "{:%d %b - %H:%M}",
+		"on-click": "kitty -e ikhal"
     },
 	"network": {
 		"tooltip": false,
